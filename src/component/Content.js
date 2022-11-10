@@ -5,9 +5,10 @@ import IframeContent from './IframeContent';
 
 let x = Math.floor(Math.random() * 999);
 
-function Content() {
+function Content(search) {
     const [mostPopular, setMostPopular] = useState({});
     const [videoId, setVideoId] = useState();
+    console.log("search",search)
     function handleResponce() {
 
         // e.preventDefault();
@@ -15,8 +16,9 @@ function Content() {
         var requestOptions = {
             method: 'GET',
         };
-        // let url = localStorage.getItem('url');AIzaSyBloaji-5YAewRiumRNRt6gpZIZrry5VbY
-        let url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCHi1IRNAtudLEHveNEwFvIGiq6QHj739o&maxResults=10&part=snippet&type=video&q=145";
+        let url2 = localStorage.getItem('url');
+        // AIzaSyBloaji-5YAewRiumRNRt6gpZIZrry5VbY
+        let url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCHi1IRNAtudLEHveNEwFvIGiq6QHj739o&maxResults=10&part=snippet&type=video&q="+x;
         console.log(url);
         fetch(url, requestOptions).then(response => response.json()).then(response => {
             if (Object.keys(response).length > 0) {
