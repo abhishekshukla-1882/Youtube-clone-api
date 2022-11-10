@@ -3,6 +3,7 @@ import './App.css';
 import Header from './component/Header';
 import Sidebar from './component/Sidebar';
 import Content from './component/Content';
+import IframeContent from './component/IframeContent';
 function App() {
   return (
     <div className="App">
