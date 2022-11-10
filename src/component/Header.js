@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MicIcon from '@mui/icons-material/Mic';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import Content from './Content';
 
-function Header() {
+function Header(props) {
+   console.log(props,'hit')
+
     return (
         <div >
             <>
-                {/* Navbar */}
+                {/* {getsearch()} */}
                 <div class="pos-f-t">
                     {/* <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
@@ -35,7 +38,9 @@ function Header() {
                                     placeholder="Search"
                                     defaultValue=""
                                 />
-                                <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+                                <button id="searchQuerySubmit" type="submit" onClick = {()=>{
+                                    props.setSearch(document.getElementById("searchQueryInput").value)
+                                }} name="searchQuerySubmit">
                                     <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
                                         <path
                                             fill="#666666"
