@@ -6,7 +6,8 @@ import Content from './component/Content';
 import IframeContent from './component/IframeContent';
 import { useEffect, useState } from 'react';
 function App() {
-  const [search, setsearch] = useState("");
+  let x = Math.floor(Math.random() * 999);
+  const [search, setsearch] = useState();
 
   useEffect(()=>{
     console.log('hit',search)
