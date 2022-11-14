@@ -13,25 +13,25 @@ function Content(props) {
     const [videoId, setVideoId] = useState();
     // console.log("search",search)
   
-    function handleResponce() {
+    function handleResponce(search) {
 
         // e.preventDefault();
-        // let url = "";
+        let url = "";
         console.log("hann",props.search)
         // const newrecord = { ...MultiInput, id: new Date().getTime().toString() };
         var requestOptions = {
             method: 'GET',
         };
-        // if(props.search !== undefined){
-        //     let sea = props.search;
-        //     console.log("dddd",sea);
-        //     url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCntCSP6aZeGrmPDAaxG0FDr4npIeOHpAg&maxResults=10&part=snippet&type=video&q="+sea;
-        //     console.log("utl",url)
-        // }else{
+        if(props.search !== undefined){
+            let sea = props.search;
+            console.log("dddd",sea);
+            url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCYQj_--Y_ZIsML0EwToeZ8TAgkCbR_ERA&maxResults=10&part=snippet&type=video&q="+search;
+            console.log("utl",url) 
+        }else{
 
-        //     url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCntCSP6aZeGrmPDAaxG0FDr4npIeOHpAg&maxResults=10&part=snippet&type=video&q="+x;
-        // }
-        let url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBbWCubWQ6bnDzYYU9tj4Nk-Fdtn0LOaTk&maxResults=10&part=snippet&type=video&q="+urt;
+            url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCYQj_--Y_ZIsML0EwToeZ8TAgkCbR_ERA&maxResults=10&part=snippet&type=video&q="+x;
+        }
+        // let url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBbWCubWQ6bnDzYYU9tj4Nk-Fdtn0LOaTk&maxResults=10&part=snippet&type=video&q="+urt;
 
 
         // }
@@ -54,12 +54,12 @@ function Content(props) {
         }).catch(err => console.error(err));
 
     }
-    function Gethandle() {
+    // function Gethandle() {
 
-        useEffect(() => {
-            handleResponce()
-        }, []);
-    }
+    //     useEffect(() => {
+    //         handleResponce()
+    //     }, []);
+    // }
     useEffect(() => {
         handleResponce()
     }, []);
@@ -69,14 +69,18 @@ function Content(props) {
     useEffect(() => {
         console.log('data1', mostPopular.items)
     }, [mostPopular]);
-    if(props.search !== undefined){
-        // handleResponce()
-        // Gethandle()
-        setUrt(props.search);
-        i +=1;
-        console.log("iiii",i)
-        
-    }
+    useEffect(()=>{
+        if(props.search !== undefined){
+            handleResponce(props.search)
+            // Gethandle()
+
+            // setUrt(props.search);
+            i +=1;
+            console.log("iiii",i)
+            
+        }
+
+    },[props.search])
     return (<>
 
             <div className="w3-container w3-teal">
